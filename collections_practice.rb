@@ -26,3 +26,31 @@ def count_elements(array)
   counted_array
 end
 
+def merge_data(hash_array1, hash_array2)
+  new_hash_array = []
+  hash_array1.each do |hash|
+    hash.each do |key, value|
+      hash_array2.each do |hash|
+        hash.each do |k, v|
+          if value == k
+            v[key] = value
+            new_hash_array << v
+          end
+        end
+      end
+    end
+  end
+  new_hash_array
+end
+
+def find_cool(hash_array)
+  cools = []
+  hash_array.each do |hash|
+    hash.each do |key, value|
+      if value == "cool"
+        cools << hash
+      end
+    end
+  end
+  cools
+end
