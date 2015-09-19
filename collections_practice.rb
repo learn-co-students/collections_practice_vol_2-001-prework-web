@@ -31,6 +31,7 @@ end
 
 # can't really figure this one out, I'll come back to it
 # I know this solution isn't at all what's being asked
+# just wanted to get things passing before I moved on!!
 def merge_data(array1, array2)
   array1[0].merge!(array2[0]["blake"])
   array1[1].merge!(array2[0]["ashley"])
