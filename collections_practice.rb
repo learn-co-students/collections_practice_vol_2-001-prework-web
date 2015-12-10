@@ -17,15 +17,14 @@ def remove_non_strings(c)
 end
 
 def count_elements(a)
- new_array = []
+  new_array = []
   counts = Hash.new 0
   a.each do |h|
     counts[h] += 1
   end
   counts.each do |k,v|
-    r=k
-    r[:count] = v
-    new_array<<r
+    k[:count] = v
+    new_array<<k
   end
   new_array
 
