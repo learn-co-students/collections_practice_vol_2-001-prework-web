@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pry'
 
 describe 'collections practice vol 2.' do
 
@@ -147,6 +148,7 @@ describe 'collections practice vol 2.' do
     # Question 6
 
     it 'combines two nested data structures into one' do
+      #binding.pry
       expect(merge_data(keys, data)).to eq(merged_data)
     end
 
@@ -165,7 +167,7 @@ describe 'collections practice vol 2.' do
   describe '#organize_schools' do
 
     # Question 8
-
+     
     it 'organizes the schools by location' do
       expect(organize_schools(schools)).to eq(organized_schools)
     end
