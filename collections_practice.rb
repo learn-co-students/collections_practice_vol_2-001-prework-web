@@ -1,3 +1,5 @@
+require 'pry'
+
 def begins_with_r(things)
   things.all? { |thing| thing =~ /r/ }
 end
@@ -55,11 +57,12 @@ end
 def organize_schools(things)
   new_things = Hash.new
   things.each do |thing|
-    location = thing[1].values
-    if new_things.has_key?(location[0])
-      new_things[location[0]] << thing[0]
+    #binding.pry
+    if new_things.has_key?(thing[1][:location])
+      new_things[thing[1][:location]
+] << thing[0]
     else
-      new_things[location[0]] = [thing[0]]
+      new_things[thing[1][:location]] = [thing[0]]
     end
   end
   new_things
