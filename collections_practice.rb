@@ -1,5 +1,5 @@
 def begins_with_r(array)
-  #array.include? { |e| e.match( /^r/ ) }
+  array.include? { |e| e.match( /^r/ ) }
 end
 
 def contain_a(array)
