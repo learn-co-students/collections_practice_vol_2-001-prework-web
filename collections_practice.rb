@@ -14,20 +14,20 @@ def first_wa(array)
 end
 
 def remove_non_strings(array)
-   array.keep_if { |x| x.is_string? }
-   #array.each do |x|
-    #if x.is_string? == !true 
-      #x.reject!
-    #end
-  #end
+   array.keep_if { |x| x.is_a?(String) }
 end
 
 def count_elements(array)
   #array.uniq{|d| d[:a]}
   array.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1 }
+  return "#{word} :count#{counts[word]}, "
 end
 
 def merge_data(keys, data)
+  a = keys.flatten
+  b = data.flatten
+  c = a | b
+  return c.reduce(:concat)
   #array.flatten
   #array.reduce(:concat)
 end
