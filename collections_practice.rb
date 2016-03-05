@@ -16,6 +16,9 @@ def remove_non_strings(array)
 end
 
 #I do not understand how the following works yet! Main struggles came from not being able to format in the way rspec tests required
+######################################################################################################################################
+##                                    RETURN TO THIS SECTION AFTER GOING THROUGH HASHES ON LEARN                                    ##
+######################################################################################################################################
 def count_elements(array)
  #create a new Hash
  name_to_count = {}
@@ -63,6 +66,7 @@ def count_elements(array)
     result
   end
 
+#this I do not understand at all
 def organize_schools(schools)
   result = {}
     schools.each do |name, school|
