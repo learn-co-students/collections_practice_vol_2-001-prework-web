@@ -43,12 +43,23 @@ def merge_data(keys, data)
   new_struct,i = [], 0
   keys.each {|hash| new_struct << hash}
 
-  data.each do |hash|
-    hash.each do |prop,value|
-      new_struct[i][prop] = value
+  data.each do |ary|
+    ary.each do |name,traits|
+      traits.each do |trait,value|
+        new_struct[i][trait] = value
+      end
       i += 1
     end
   end
   new_struct
 end
 
+def organize_schools(schools)
+  organized = {"NYC"=>[],"SF"=>[],"Chicago"=>[]}
+  schools.each do |school, locations|
+    locations.each do |location,city|
+      organized[city] << school
+    end
+  end
+  organized
+end
