@@ -41,7 +41,7 @@ def merge_data(key,data)
 	key.each_index do |i|
 		data[0].keys.each do |name|
 			merged << key[i].merge(data[0][name]) if name == key[i][:first_name]
-		end
+    end
 	end
   merged
 
