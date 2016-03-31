@@ -51,6 +51,24 @@ def find_cool(hash)
   super_cool
 end
 
+def organize_schools(schools)
+  organized = Hash.new([])
+  schools.each do |school, loc|
+    loc.each do |l, city|
+      organized[city] = []
+    end
+  end
+  schools.each do |school, loc|
+    loc.each do |l, city|
+      organized[city] << school
+    end
+  end
+ organized
+
+end
+
+
+
 
 
 
