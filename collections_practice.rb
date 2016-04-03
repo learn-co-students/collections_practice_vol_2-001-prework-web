@@ -71,17 +71,12 @@ end
 
 def organize_schools(x)
 
-locations = []
+array_locations = []
 x.each do |school_name, location|
-locations << location.values
+array_locations << location.values.join(" ")
 end
 
-new_array = []
-locations.map do |values|
-new_array << values.join
-end
-
-array_locations = new_array.uniq
+array_locations.uniq! 
 
 hash = {}
 
