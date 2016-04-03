@@ -92,7 +92,7 @@ end
 
 x.each do |school, location_hash|
   location_hash.each do |none, city|
-location = x[school][none]
+location = city
 
 hash[location] << school
 end
