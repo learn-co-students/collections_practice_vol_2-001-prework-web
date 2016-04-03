@@ -1,7 +1,73 @@
-#Learn.co Educational Content License
+x = {
+      "flatiron school bk" => {
+        :location => "NYC"
+      },
+      "flatiron school" => {
+        :location => "NYC"
+      },
+      "dev boot camp" => {
+        :location => "SF"
+      },
+      "dev boot camp chicago" => {
+        :location => "Chicago"
+      },
+      "general assembly" => {
+        :location => "NYC"
+      },
+      "Hack Reactor" => {
+        :location => "SF"
+      }
+    }
 
-Copyright (c) 2015 Flatiron School, Inc
+   x.values
+http://stackoverflow.com/questions/10989259/swapping-keys-and-values-in-a-hash
+array = []
+x.each do |key, value|
+array << value.values
+end
 
-The Flatiron School, Inc. owns this Educational Content. However, the Flatiron School supports the development and availability of educational materials in the public domain. Therefore, the Flatiron School grants Users of the Flatiron Educational Content set forth in this repository certain rights to reuse, build upon and share such Educational Content subject to the terms of the Educational Content License set forth [here](http://learn.co/content-license) (http://learn.co/content-license). You must read carefully the terms and conditions contained in the Educational Content License as such terms govern access to and use of the Educational Content.  
+new_array = []
+array.map do |values|
+new_array << values.join
+end
 
-Flatiron School is willing to allow you access to and use of the Educational Content only on the condition that you accept all of the terms and conditions contained in the Educational Content License set forth [here](http://learn.co/content-license) (http://learn.co/content-license).  By accessing and/or using the Educational Content, you are agreeing to all of the terms and conditions contained in the Educational Content License.  If you do not agree to any or all of the terms of the Educational Content License, you are prohibited from accessing, reviewing or using in any way the Educational Content.
+locations = new_array.uniq
+
+locations.each do |x|
+
+x = Hash.new
+
+end
+
+
+i = 0
+until yada yada 
+
+locations.each do |x|
+
+if x.values[i][:location] == x
+
+
+
+x.key({:location=>"NYC"})
+
+
+x.each do |key, value|
+if x[key] == {:location=>}
+
+array[0][location]
+
+
+
+x.map do |k, v| v== locations[i]
+
+
+
+
+http://stackoverflow.com/questions/3794039/how-to-find-a-hash-key-containing-a-matching-value
+
+
+
+
+http://stackoverflow.com/questions/4356410/ruby-efficient-way-to-get-multiple-hash-keys-for-a-given-value
+
