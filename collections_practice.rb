@@ -72,10 +72,8 @@ end
 def organize_schools(x)
 
 locations = []
-schools = []
 x.each do |school_name, location|
 locations << location.values
-schools << school_name
 end
 
 new_array = []
@@ -93,11 +91,11 @@ hash[city] = []
 end
 
 x.each do |school, location_hash|
-
-location = x[school][:location]
+  location_hash.each do |none, city|
+location = x[school][none]
 
 hash[location] << school
-
+end
 end
 hash
 

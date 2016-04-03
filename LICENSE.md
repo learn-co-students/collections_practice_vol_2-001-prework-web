@@ -63,6 +63,22 @@ x.map do |k, v| v== locations[i]
 
 
 
+x.each do |school, location_hash|
+
+location = x[school][:location]
+
+hash[location] = school
+
+end
+
+
+
+hash = {}
+
+
+
+
+
 
 http://stackoverflow.com/questions/3794039/how-to-find-a-hash-key-containing-a-matching-value
 
