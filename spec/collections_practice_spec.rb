@@ -82,13 +82,14 @@ describe 'collections practice vol 2.' do
       }
     }
   }
+  
   let(:organized_schools) {
     {"NYC"=>["flatiron school bk", "flatiron school", "general assembly"],
      "SF"=>["dev boot camp", "Hack Reactor"],
      "Chicago"=>["dev boot camp chicago"]}
   }
 
-  describe '#begins_with_r' do
+  describe '#begins_with_r' do 
     # Question 1
 
     it 'Return true if every element of the tools array starts with an "r" and false otherwise.' do
