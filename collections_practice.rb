@@ -57,16 +57,11 @@ end
 def organize_schools(school_collection)
   organized_schools = {}
   school_collection.each do |school, location_hash|
-    location_hash.each do |location, value|
-      organized_schools[value] = []
-    end
-  end
-  organized_schools.each do |location, schools|
-    school_collection.each do |school, location_hash|
-      location_hash.each do |key, value|
-        if value == location
-          schools << school
-        end
+    location_hash.each do |key, location|
+      if organized_schools.has_key?(location)
+       organized_schools[location] << school
+      else
+       organized_schools[location] = [school]
       end
     end
   end
