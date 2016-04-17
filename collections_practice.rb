@@ -30,35 +30,13 @@ def count_elements(array_elements)
 end
 
 def merge_data(keys, data)
-    keys.collect do |key|
-        key.merge(data[0][key[:first_name]])
-    end
+   
 end
 
 def find_cool(array_elements)
-    array_elements.select do |element|
-    element[:temperature] == "cool"
-  end
+
 end
 
-def organize_schools(schools)
-    loc_hash = []
-    city_hash = {}
-    schools.each do |school, data|
-        loc_hash << data.values
-    end
-    loc_hash.uniq.flatten.each do |value|
-        city_hash[value] = []
-    end
-    
-    schools.each do |school, data|
-        data.each do |attribute, city|
-            city_hash.each do |city_2, city_schools|
-                if city_2 == city
-                    city_schools << school
-                end
-            end
-        end
-    end
-    city_hash
+def organize_schools
+
 end
