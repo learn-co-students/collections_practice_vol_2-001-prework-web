@@ -1,102 +1,97 @@
-# your code goes here
 def begins_with_r(array)
   array.each do |element|
-    if element[0] != "r"
-    return false
+    letters = element.split("")
+    if letters[0]!="r"
+      return false
+    end
   end
-end
-return true
+  return true
 end
 
 def contain_a(array)
-  have_a=[]
+  as=[]
   array.each do |element|
-    x=0
-    while x < element.length
-      if element[x] == "a"
-        have_a << element
-      end
-      x+=1
-    end
-  end
-  return have_a
+   letters = element.split("")
+   if letters.include?("a")
+as << element
+end
+end
+return as
 end
 
 def first_wa(array)
-  array.find do |element|
-    element[0] == "w" && element[1] == "a"
+  array.each do |element|
+    letters = element.to_s.split("")
+    if letters[0] == "w" && letters[1] == "a"
+      return element
+    end
   end
 end
 
 def remove_non_strings(array)
-  array.delete_if do |element|
-    element.is_a?(String) == false 
-  end
-  return array
-end 
+  stringsonly=[]
+  array.each do |element|
+    if element.is_a?(String) == true
+stringsonly<<element
+end
+end
+return stringsonly
+end
 
 def count_elements(array)
-  returning=[]
-  array.each do |name|
-    hash={}
-      hash = name
-      hash[:count] = 1
-      returning<<hash
+  hashesarray=[]
+nameshash=Hash.new(0)
+array.each do |hash|
+  hash.each do |key, val|
+nameshash[val] +=1
+end
+end
+nameshash.each do |name1, count1|
+  namecounthash=Hash.new(0)
+  namecounthash[:name]=name1
+  namecounthash[:count]=count1
+  hashesarray << namecounthash
+end
+return hashesarray
   end
-  returning.shift(1)
-  returning[0][:count] +=1
-return returning
+
+
+
+def merge_data(hash1, hash2)
+  newhash=[]
+  hash2.each do |hash|
+    hash.each do |key, val|
+            newerhash={}
+      hash1.each do |keyshash|
+        keyshash.each do |keyskey, keysval|
+          if key == keysval
+            newerhash[keyskey] = keysval
+          end
+        end
+      end
+      if hash1[0].values.include?(key) || hash1[1].values.include?(key)
+        val.each do |key4, val4|
+          newerhash[key4] = val4
+        end
+      end
+          newhash << newerhash
+        end
+  end
+return newhash
 end
 
-def merge_data(keys, data)
-  keyarray=[]
-  dataarray=[]
-  realdataarray=[]
-  elfinale=[]
-  keys.each do |key|
-    keyarray << key
-  end
-    data.each do |data|
-    dataarray << data
-  end
-   realdataarray<<dataarray[0]["blake"]
-   realdataarray<<dataarray[0]["ashley"]
-   mergedarrayblake = keyarray[0].merge(realdataarray[0])
-   mergedarrayashley = keyarray[1].merge(realdataarray[1])
-   elfinale << mergedarrayblake
-   elfinale << mergedarrayashley
-return elfinale
-end
-
-def find_cool(hash)
-  elfinale=[]
-  hash.each do |value|
-    value.each do |key, val|
+def find_cool(array)
+  cool_array=[]
+ array.each do |hash|
+  hash.each do |key, val|
     if val == "cool"
-      elfinale << value
+      cool_array << hash
     end
   end
 end
-return elfinale
+return cool_array
 end
 
-def organize_schools(schools)
-  hash={}
-  schools.each do |koy, val|
-    val.each do |key, vald|
-    hash[vald] = []
-  end
-end
-schools.each do |firstkey, firstval|
-firstval.each do |seckey, secval|
-  if secval == "NYC"
-    hash["NYC"] << firstkey
-    elsif secval == "Chicago"
-    hash["Chicago"]<<firstkey
-    elsif secval == "SF"
-    hash["SF"] << firstkey
-    end 
-end
-end
-  return hash
-  end
+
+
+
