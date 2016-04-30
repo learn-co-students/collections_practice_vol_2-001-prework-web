@@ -1,5 +1,6 @@
 # your code goes here
 
+require "pry"
 
 def begins_with_r(array)
 	count=0
@@ -37,16 +38,61 @@ end
 
 def count_elements(array)
 	result =[]
-	array.each do |word|
-		#if result.has_value?(word)==false 
-			result << {:name => word, :count => array.count(word)}
-		#end 
+	array.each do |name|
+		name.each do |key, value|
+			result <<  {:name => value, :count => array.count(name)}
+	 	end 
+	end 
+	result.uniq
+end 
+
+
+def merge_data(keys, data)
+	result=[]
+	keys.each do |key_v|
+		key_v.each do |key, name|
+			data.each do |name_key|
+				name_key.each do |name_value, name_key|
+					if name_value==name 
+						 name_key[key] = name
+						result << name_key
+					end
+				end 
+			end
+		 
+		end
+	end  
+	result 
+end 
+
+def find_cool(array)
+	result =[]
+	array.each do |hash|
+		hash.each do |values|
+			values.each do |key, value|
+				if key=="cool"
+					result << hash
+				end 
+			end 
+		end 
+	end 
+	result 
+end 
+
+def organize_schools(hash)
+	result ={}
+	hash.each do |school, value|
+		value.each do |location, city|
+			if result.has_key?(city)==false 
+				result[city] = [school]
+			else 
+				result[city] << school 
+			end 
+		end 
 	end 
 	result 
 end 
 
 
-def merge_data(keys, data)
-	keys.merge(data)
 
-end 
+
