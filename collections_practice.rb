@@ -18,7 +18,19 @@ def remove_non_strings(arr)
 end
 
 def count_elements(arr)
-#   arr.count(i)
+  result = []
+  arr.each do |i|
+    i.each do |k, v|
+      # make new hash
+      h = {k => v, :count => arr.count(i)}
+      # check if new hash exists in result
+      if !result.include?(h)
+        # push to result array
+        result << h
+      end
+    end
+  end
+  result
 end
 
 def merge_data(keys, data)
@@ -39,4 +51,23 @@ end
 
 def find_cool(cool)
   cool.select { |i| i.has_value?("cool") }
+end
+
+def organize_schools(schools)
+  # initialize empty hash
+  organized_schools = {}
+  # iterate ovah schools
+  schools.each do |school, data|
+    # iterate ovah data
+    data.each do |att, value|
+      # check if key exists, push if so
+      if organized_schools.has_key?(value)
+        organized_schools[value] << school
+      else
+        # use merge method to add new hash
+        organized_schools.merge!({value => [school]})
+      end
+    end
+  end
+  organized_schools
 end
