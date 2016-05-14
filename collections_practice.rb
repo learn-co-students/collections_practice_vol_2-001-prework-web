@@ -1,84 +1,70 @@
 require 'pry'
-# your code goes here
-def begins_with_r(arr)
-	arr.all? {|word| word[0] == 'r'}	#-->all? => true or false
+
+def begins_with_r(array)
+	array.all? { |word| word[0] == 'r' }
 end
 
 
-
-def contain_a(arr)
-	arr.select do |word|
-		word.split('').include?('a')	#--> convert each word into array of chars, does array include a?
-	end
+def contain_a(array)
+	array.select { |word| word.split('').include?('a') }
 end
 
 
-
-def first_wa(arr)
-	arr.find do |word|
-		word.slice(0,2) == 'wa'		#--> #(0,2) does not include 2
-	end
-end
-
-def remove_non_strings(arr)
-	arr.delete_if {|thing| thing.class != String}
+def first_wa(array)
+	array.find { |word| word.slice(0,2) == 'wa'}
 end
 
 
-
-def count_elements(arr)
-	newArr = []
-	newHash = {}
-	newHash.default = 0
-
-	arr.each do |hash|
-		newHash[hash[:name]] += 1		#{"blake" => 1}
-	end
-
-	newHash.each do |name, count|
-		newArr << {:name => name, :count => count}
-	end
-	newArr
+def remove_non_strings(array)
+	array.delete_if {|element| element.class != String}
 end
 
 
-#keys => [{:first_name=>"blake"}, {:first_name=>"ashley"}]
-#data => {"blake"=>{:awesomeness=>10, :height=>"74", :last_name=>"johnson"},"ashley"=>{:awesomeness=>9, :height=>60, :last_name=>"dubs"}}
-#expected => [{:first_name=>"blake", :awesomeness=>10, :height=>"74", :last_name=>"johnson"}, {:first_name=>"ashley", :awesomeness=>9, :height=>60, :last_name=>"dubs"}]
+def count_elements(array)
+	new_array = []
+	new_hash = {}
+	new_hash.default = 0	# sets default value to 0 for each key (for += 1)
+
+	array.each { |name| new_hash[name[:name]] += 1	}
+	new_hash.each { |name, count| new_array << {:name => name, :count => count} }
+	new_array
+end
 
 
 def merge_data(keys, data)
-	newArr = []
-	data1 = data[0]	#----> important allows access to hash stored within array
-	keys.each do |name|
-		#binding.pry
-		first_name = name[:first_name]		#=>"blake"
-		newHash = {:first_name => first_name}		#=>{:first_name =>"blake"}
-		newHash.merge!(data1[first_name])	#=> #{:first_name=>"blake", {:awesomeness=>10, :height=>"74", :last_name=>"johnson"}}
-		newArr << newHash
+	new_array = []
+	data_hash = data[0]	#allows access to key/value pairs stored within data hash
+
+	keys.each do |first_name|
+		new_hash = {:first_name => first_name[:first_name]}
+		new_hash.merge!(data_hash[first_name[:first_name]])	
+		new_array << new_hash
 	end
-	newArr
-end
 
-#arg = [{:name=>"ashley", :temperature=>"sort of cool"}, {:name=>"blake", :temperature=>"cool"}]
-
-def find_cool(arg)
-	arg.delete_if {|hash| hash[:temperature] != "cool"}
+	new_array
 end
 
 
-def organize_schools(schools)
-	#binding.pry
-	newSchools = {}
+def find_cool(data)
+	new_array = []
+	data.each { |hash| new_array << hash if hash[:temperature] == "cool" }
+	new_array
+end
 
-	schools.each do |name, location|		
-		#name=> "flatiron school bk"
-		#location=> {:location=>"NYC"} //location[:location]=> "NYC"
-		if newSchools.has_key?(location[:location])
-			newSchools[location[:location]] << name
-		else
-			newSchools[location[:location]] = [name]	#important --> assign name within array
+
+def organize_schools(data)	
+	new_hash = {}
+
+	data.each do |school, location|		
+		if new_hash.has_key?(location[:location])
+				new_hash[location[:location]] << school
+			else
+				new_hash[location[:location]] = [school]
 		end
-	end
-	newSchools
+	end		
+	
+	new_hash
 end
+
+     
+
