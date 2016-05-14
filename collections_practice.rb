@@ -35,9 +35,9 @@ def merge_data(keys, data)
 	new_array = []
 	data_hash = data[0]	#allows access to key/value pairs stored within data hash
 
-	keys.each do |first_name|
-		new_hash = {:first_name => first_name[:first_name]}
-		new_hash.merge!(data_hash[first_name[:first_name]])	
+	keys.each do |key|
+		new_hash = {:first_name => key[:first_name]}
+		new_hash.merge!(data_hash[key[:first_name]])	
 		new_array << new_hash
 	end
 
@@ -55,14 +55,14 @@ end
 def organize_schools(data)	
 	new_hash = {}
 
-	data.each do |school, location|		
-		if new_hash.has_key?(location[:location])
-				new_hash[location[:location]] << school
+	data.each do |school, city|		
+		if new_hash.has_key?(city[:location])
+				new_hash[city[:location]] << school
 			else
-				new_hash[location[:location]] = [school]
+				new_hash[city[:location]] = [school]
 		end
 	end		
-	
+
 	new_hash
 end
 
