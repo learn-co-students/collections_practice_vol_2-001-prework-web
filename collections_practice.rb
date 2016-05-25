@@ -31,9 +31,27 @@ def remove_non_strings(array)
 end
 
 def count_elements(array)
-  count = Hash.new
-  counter = 0
-  array.each do |value|
-    count[counter] += 1
+  array.group_by(&:itself).map do |k, v|
+    k.merge(count: v.length)
+  end
+end
+
+def merge_data(a1, a2)
+  a2[0].values.map.with_index do |v, i|
+    a1[i].merge(v)
+  end
+end
+
+def find_cool(array)
+  array.select do |hash|
+    hash[:temperature] == "cool"
+  end
+end
+
+def organize_schools(array)
+  array.each_with_object({}) do |(name, data), res|
+    location = data[:location]
+    res[location] ||= []
+    res[location] << name
   end
 end
