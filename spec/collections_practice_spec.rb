@@ -61,26 +61,12 @@ describe 'collections practice vol 2.' do
   }
 
   let(:schools) {
-    {
-      "flatiron school bk" => {
-        :location => "NYC"
-      },
-      "flatiron school" => {
-        :location => "NYC"
-      },
-      "dev boot camp" => {
-        :location => "SF"
-      },
-      "dev boot camp chicago" => {
-        :location => "Chicago"
-      },
-      "general assembly" => {
-        :location => "NYC"
-      },
-      "Hack Reactor" => {
-        :location => "SF"
-      }
-    }
+    {"flatiron school bk" => {:location => "NYC"},
+     "flatiron school" => {:location => "NYC"},
+     "dev boot camp" => {:location => "SF"},
+     "dev boot camp chicago" => {:location => "Chicago"},
+     "general assembly" => {:location => "NYC"},
+     "Hack Reactor" => {:location => "SF"}}
   }
   let(:organized_schools) {
     {"NYC"=>["flatiron school bk", "flatiron school", "general assembly"],
@@ -121,7 +107,7 @@ describe 'collections practice vol 2.' do
   end
 
   describe '#remove_non_strings' do
-    
+
     # Hint: Use the method "class"  "blake".class
 
     # Question 4
