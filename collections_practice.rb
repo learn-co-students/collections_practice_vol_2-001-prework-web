@@ -34,11 +34,12 @@ end
 def organize_schools(schools)
   new_hash = {}
   city_array = []
-  schools.each {|school, place| place.each {|location, city| city_array << city if city_array.include?(city) == false}}
+  schools.each {|school, place| city_array = place.values}
+  return city_array
 
   city_array.map.with_index {|city, i|
     school_array = []
     schools.map {|school, place| school_array << school if place.value?(city_array[i])}
     new_hash[city] = school_array}
-  new_hash
+#  new_hash
 end
