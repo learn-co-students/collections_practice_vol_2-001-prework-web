@@ -1,9 +1,96 @@
-require 'spec_helper'
+# your code goes here
+def begins_with_r(array)
+  arr = []
+  arr = array.select do |i|
+    i.start_with?("r")
+  end
 
-describe 'collections practice vol 2.' do
+  if arr.length == array.length
+    return true
+    else
+      return false
+  end
+end
 
-  let(:keys) {
-    [
+def contain_a(array)
+  array.select do |i|
+    i.include?("a")
+  end
+end
+
+def first_wa(array)
+  x = ""
+  array.select! do |i|
+    x = i.to_s
+    x.start_with?("wa")
+  end
+array[0]
+end
+
+def remove_non_strings(array)
+  array.select! do |i|
+    i.is_a? String
+  end
+end
+
+def count_elements(array)
+  found = []
+  array.uniq.each do |word|
+    word[:count] = array.count(word)
+    found << word
+  end
+  found
+end
+
+
+def merge_data(keys, data)
+final = []
+
+  keys.each do |i|
+    i.each_pair do |x,y|
+         data.each do |k|
+          k.each_pair do |z,t|
+            if i[x] == z
+              final << i.merge(t)
+            end
+          end
+        end
+      end
+  end
+final
+end
+
+def find_cool(array)
+ final = []
+  array.each do |x|
+    x.each_pair do |k,d|
+      if k == :temperature && d == "cool"
+        final << x
+      end
+    end
+  end
+  final
+end
+
+def organize_schools(hash)
+test = "data"
+final = {}
+x=0
+  hash.each_pair do |k,d|
+    d.each_pair do |k2, d2|
+      if final[d2] == nil
+        final[d2] =[]
+        final[d2] << k
+      else
+        final[d2] << k
+      end
+
+    end
+  end
+final
+end
+
+keys = [
            {
             :first_name => "blake"
         },
@@ -11,10 +98,9 @@ describe 'collections practice vol 2.' do
             :first_name => "ashley"
         }
     ]
-  }
 
-  let(:data) {
-    [
+
+  data = [
            {
              "blake" => {
                 :awesomeness => 10,
@@ -28,148 +114,5 @@ describe 'collections practice vol 2.' do
             }
         }
     ]
-  }
 
-  let(:merged_data) {
-    [
-           {
-             :first_name => "blake",
-            :awesomeness => 10,
-                 :height => "74",
-              :last_name => "johnson"
-        },
-           {
-             :first_name => "ashley",
-            :awesomeness => 9,
-                 :height => 60,
-              :last_name => "dubs"
-        }
-    ]
-  }
-
-  let(:cool) {
-    [
-            {
-                   :name => "ashley",
-            :temperature => "sort of cool"
-        },
-            {
-                   :name => "blake",
-            :temperature => "cool"
-        }
-    ]
-  }
-
-  let(:schools) {
-    {
-      "flatiron school bk" => {
-        :location => "NYC"
-      },
-      "flatiron school" => {
-        :location => "NYC"
-      },
-      "dev boot camp" => {
-        :location => "SF"
-      },
-      "dev boot camp chicago" => {
-        :location => "Chicago"
-      },
-      "general assembly" => {
-        :location => "NYC"
-      },
-      "Hack Reactor" => {
-        :location => "SF"
-      }
-    }
-  }
-  let(:organized_schools) {
-    {"NYC"=>["flatiron school bk", "flatiron school", "general assembly"],
-     "SF"=>["dev boot camp", "Hack Reactor"],
-     "Chicago"=>["dev boot camp chicago"]}
-  }
-
-  describe '#begins_with_r' do
-    # Question 1
-
-    it 'Return true if every element of the tools array starts with an "r" and false otherwise.' do
-      expect(begins_with_r(["ruby", "rspec", "rails"])).to eq(true)
-    end
-
-    it "should return false if there's an element that does not begin with r" do
-      expect(begins_with_r(["ruby", "rspec", "sails"])).to eq(false)
-    end
-
-  end
-
-  describe '#contain_a' do
-    # Question 2
-
-    it "return all elements that contain the letter 'a'" do
-      expect(contain_a(["earth", "fire", "wind", "water", "heart"])).to eq(["earth", "water", "heart"])
-    end
-
-  end
-
-  describe '#first_wa' do
-
-    # Question 3
-
-    it "Return the first element that begins with the letters 'wa'" do
-      expect(first_wa(["candy", :pepper, "wall", :ball, "wacky"])).to eq("wall")
-    end
-
-  end
-
-  describe '#remove_non_strings' do
-
-    # Hint: Use the method "class"  "blake".class
-
-    # Question 4
-
-    it "remove anything that's not a string from an array" do
-      expect(remove_non_strings(["blake", 1, :hello])).to eq(["blake"])
-    end
-
-  end
-
-  describe '#count_elements' do
-
-    # Question 5
-
-    it 'count how many times something appears in an array' do
-      expect(count_elements([{:name => "blake"}, {:name => "blake"}, {:name => "ashley"}])).to eq([{:name => "blake", :count => 2}, {:name => "ashley", :count => 1}])
-    end
-
-  end
-
-  describe '#merge_data' do
-
-    # Question 6
-
-    it 'combines two nested data structures into one' do
-      expect(merge_data(keys, data)).to eq(merged_data)
-    end
-
-  end
-
-  describe '#find_cool' do
-
-    # Question 7
-
-    it 'find all cool hashes' do
-      expect(find_cool(cool)).to eq([{:name => "blake",:temperature => "cool"}])
-    end
-
-  end
-
-  describe '#organize_schools' do
-
-    # Question 8
-
-    it 'organizes the schools by location' do
-      expect(organize_schools(schools)).to eq(organized_schools)
-    end
-
-  end
-
-end
+    merge_data(keys, data)
