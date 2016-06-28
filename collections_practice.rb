@@ -1,57 +1,60 @@
 # your code goes here
 def begins_with_r(array)
-  if array.length == 1
-    array[0].start_with?('r')
-  else
-    array[0].start_with?('r') and begins_with_r(array.drop(1))
-  end
+  new_array =  array.select {|word| word.start_with?("r")}
+  array == new_array
 end
 
 def contain_a(array)
-  a_array = []
-  array.each do |item|
-    if item.include?('a')
-      a_array << item
-    end
-  end
-  a_array
+  array.select {|word| word.include?("a")}
 end
 
 def first_wa(array)
-  array.each do |item|
-    if item.start_with?('wa')
-      return item
-    end
-  end
+  array.find {|word| word.start_with?("wa")}
 end
 
 def remove_non_strings(array)
-  s_array = []
-  array.each do |item|
-    if item.class == String
-      s_array << item
-    end
-  end
-  s_array
+  array.select {|item| item.class == String}
 end
 
 def count_elements(array)
-  c_array = []
-  array.uniq.each do |item|
-  	dict = {:name => item, :count => array.count(item)}
-    c_array << dict
-  end
+  c_array = array.uniq.map {|item| {:name => item, :count => array.count(item)}
   c_array
 end
 
 def merge_data(keys, data)
   merged_data = []
-  counter = 0
-  keys.each do |key|
-  	dict = { key.keys[0] => key.values[0], data[counter][key.values[0]].flatten }
-
-  	merged_data << dict
-  	counter += 1
+  data.each do |name, hash|
+    keys.each do |first_name|
+      if name == first_name
+        hash[:first_name] = first_name
+      end
+    end
+    merged_data << hash
   end
   merged_data
+end
+
+def find_cool(cool)
+	cool_hashes = []
+  cool.each do |hash|
+    hash.each do |key, value|
+      if value == "cool"
+      	cool_hashes << hash
+      end
+    end
+  end
+  cool_hashes
+end
+
+def organize_schools(schools)
+  organized_schools = {}
+  schools.each do |name, info|
+    info.each do |key, location|
+    	if not organized_schools.keys.include?(location)
+    		organized_schools[location] = []
+      end
+      organized_schools[location] << name
+    end
+  end
+  organized_schools
 end
