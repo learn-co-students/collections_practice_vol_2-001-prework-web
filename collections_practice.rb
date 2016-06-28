@@ -9,7 +9,7 @@ def contain_a(array)
 end
 
 def first_wa(array)
-  array.find {|word| word.start_with?("wa")}
+  array.find {|word| word.to_s.start_with?("wa")}
 end
 
 def remove_non_strings(array)
@@ -17,19 +17,23 @@ def remove_non_strings(array)
 end
 
 def count_elements(array)
-  c_array = array.uniq.map {|item| {:name => item, :count => array.count(item)}
+  c_array = array.uniq.map {|item| {:name => item[:name], :count => array.count(item)}}
   c_array
 end
 
 def merge_data(keys, data)
   merged_data = []
-  data.each do |name, hash|
-    keys.each do |first_name|
-      if name == first_name
-        hash[:first_name] = first_name
+  keys.each do |keys_hash|
+    keys_hash.each do |keys_key, keys_value|
+      data.each do |data_hash|
+        data_hash.each do |data_key, profile|
+          if keys_value == data_key
+            data_hash[data_key][keys_key] = keys_value
+            merged_data << profile
+          end
+        end
       end
     end
-    merged_data << hash
   end
   merged_data
 end
