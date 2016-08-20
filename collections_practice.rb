@@ -15,8 +15,10 @@ def first_wa(array)
   ar = []
   array.each {|x|
     if ar.size == 0
-      if x.include?('wa')
-        ar.push(x)
+      if x.instance_of? String
+        if x.include?('wa')
+          ar.push(x)
+        end
       end
     end
     }
@@ -24,40 +26,70 @@ def first_wa(array)
 end
 
 def remove_non_strings(array)
-  ar = []
-  ar = array.each.with_index {|x, i| array.delete(i) if x.is_a?(!String)}
-  ar
+  array.delete_if {|x|
+    if x.instance_of? String
+      false
+    else
+      true
+    end
+  }
 end
 
 def count_elements(array)
-  count = 0
-  while count < array.length do
-    num = array.count {|x| x.has_value?(x.values_at(:name))}
-    count += 1
-    array.uniq! {|h| h.values_at(:name)}
-    array[count].merge!(:count => num)
+  names = []
+  ar = []
+  array.each {|x|
+    x.each_value {|val| names.push(val)}
+  }
+  temp_name = ""
+  temp_count = 0
+
+  while names.length > 0
+    temp_name = names[0]
+    temp_count = names.count(temp_name)
+    names.delete(temp_name)
+    temp_hash = {:name => temp_name, :count => temp_count}
+    ar.push(temp_hash)
   end
-  array
+  ar
 end
 
 def merge_data(array1, array2)
   merged = []
-  array1.each {|h1|
-    array2.each {|h2|
-       merged.push(hash = h1.concat(h2.values)) if h1.has_key?(h2.keys)
+  temp_hash = {}
+  counter = 0
+  array1.each{|x|
+    array2.each{|y|
+      y.each {|key, value|
+        if x.has_value?(key)
+          temp_hash = x.merge(value)
+          merged.push(temp_hash)
+        end
       }
     }
+
+  }
   merged
 end
 
 def find_cool(array)
   ar = []
-  array.each{|hash|
-    ar.push(hash) if hash.each {|key, value| value.include?("cool")}
+  array.each {|hash|
+    if hash.has_value?("cool")
+      ar.push(hash)
+    end
     }
   ar
 end
 
-def organize_schools(array)
-
+def organize_schools(schools)
+  temp_hash = {}
+  schools.each {|key, value|
+    if temp_hash.has_key?(value[:location])
+      temp_hash[value[:location]].push(key)
+    else
+      temp_hash[value[:location]] = [key]
+    end
+  }
+  temp_hash
 end
