@@ -56,8 +56,7 @@ def count_elements(set)
   return map_list
 end
 
-=begin 
-THESE ARE BOTH FAILING :( 
+# THESE ARE BOTH FAILING :( 
 # NOTE: Using `merge` to add data contents to keys
 # def merge_data(keys, data)
 #   merged_data = []
@@ -71,18 +70,17 @@ THESE ARE BOTH FAILING :(
 # end
 
 
-# NOTE: Using explicit hash syntax to add keys content to data
-# def merge_data(keys, data)
-#   merged_data = []
-#   i = 0
-#   while i < keys.length
-#     (data[i][keys[i][:first_name]])[:first_name] = (keys[i][:first_name])
-#     merged_data << data[i][keys[i][:first_name]]
-#     i += 1
-#   end
-#   return merged_data
-# end
-=end 
+# NOTE: Using explicit hash syntax to add keys content to data -- STILL FAILS
+def merge_data(keys, data)
+  merged_data = []
+  i = 0
+  while i < keys.length
+    (data[i][keys[i][:first_name]])[:first_name] = (keys[i][:first_name])
+    merged_data << data[i][keys[i][:first_name]]
+    i += 1
+  end
+  return merged_data
+end
 
 def find_cool(input)
   cool_hashes = []
@@ -103,4 +101,5 @@ def organize_schools(schools)
       location_hash[(v[:location])] = [k]
     end
   end
+  location_hash
 end
