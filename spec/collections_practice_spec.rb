@@ -28,6 +28,7 @@ describe 'collections practice vol 2.' do
             }
         }
     ]
+
   }
 
   let(:merged_data) {
