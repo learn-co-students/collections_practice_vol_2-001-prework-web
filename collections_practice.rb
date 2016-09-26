@@ -1,3 +1,5 @@
+require 'pry'
+
 def begins_with_r(input)
   sum = 0
   input.each do |word|
@@ -58,29 +60,29 @@ end
 
 # THESE ARE BOTH FAILING :( 
 # NOTE: Using `merge` to add data contents to keys
-# def merge_data(keys, data)
-#   merged_data = []
-#   i = 0
-#   while i < keys.length
-#     (keys[i]).merge!(data[i][keys[i][:first_name]])
-#     merged_data << keys[i]
-#     i += 1
-#   end
-#   return merged_data
-# end
-
-
-# NOTE: Using explicit hash syntax to add keys content to data -- STILL FAILS
 def merge_data(keys, data)
   merged_data = []
   i = 0
   while i < keys.length
-    (data[i][keys[i][:first_name]])[:first_name] = (keys[i][:first_name])
-    merged_data << data[i][keys[i][:first_name]]
+    (keys[i]).merge!(data[0][keys[i][:first_name]])
+    merged_data << keys[i]
     i += 1
   end
   return merged_data
 end
+
+
+# NOTE: Using explicit hash syntax to add keys content to data -- STILL FAILS
+# def merge_data(keys, data)
+#   merged_data = []
+#   i = 0
+#   while i < keys.length
+#     data[i][keys[i][:first_name]][:first_name] = keys[i][:first_name]
+#     merged_data << data[i][keys[i][:first_name]]
+#     i += 1
+#   end
+#   return merged_data
+# end
 
 def find_cool(input)
   cool_hashes = []
@@ -103,3 +105,44 @@ def organize_schools(schools)
   end
   location_hash
 end
+
+
+# keys = [
+#            {
+#             :first_name => "blake"
+#         },
+#            {
+#             :first_name => "ashley"
+#         }
+#     ]
+
+# data = [
+#            {
+#              "blake" => {
+#                 :awesomeness => 10,
+#                      :height => "74",
+#                   :last_name => "johnson"
+#             },
+#             "ashley" => {
+#                 :awesomeness => 9,
+#                      :height => 60,
+#                   :last_name => "dubs"
+#             }
+#         }
+#     ]
+
+
+# merged_data = [
+#            {
+#              :first_name => "blake",
+#             :awesomeness => 10,
+#                  :height => "74",
+#               :last_name => "johnson"
+#         },
+#            {
+#              :first_name => "ashley",
+#             :awesomeness => 9,
+#                  :height => 60,
+#               :last_name => "dubs"
+#         }
+#     ]
