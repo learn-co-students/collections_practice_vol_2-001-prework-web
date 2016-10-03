@@ -1,3 +1,4 @@
+require "pry"
 # your code goes here
 def begins_with_r(arr)
     arr.each do |word|
@@ -23,4 +24,12 @@ def first_wa(arr)
   	new_arr.find do |word|
   		word.include?('wa')
   	end
+end
+
+def remove_non_strings(arr)
+  arr.select {|i| i.class == String}
+end
+
+def count_elements(arr)
+  
 end
