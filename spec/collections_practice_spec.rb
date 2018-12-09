@@ -17,7 +17,7 @@ describe 'collections practice vol 2.' do
 
   let(:data) {
     [
-           {
+        {
              "blake" => {
                 :awesomeness => 10,
                      :height => "74",
