@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /home/nitrous/code/labs/collections_practice_vol_2-001-prework-web/collections_practice.rb @ line 50 Object#merge_data:
+
+    [1;34m43[0m: [32mdef[0m [1;34mmerge_data[0m(arr1,arr2)
+    [1;34m44[0m: 	merged =[]
+    [1;34m45[0m: 	arr1.each_index [32mdo[0m |i|
+    [1;34m46[0m: 		arr2[[1;34m0[0m].keys.each [32mdo[0m |name|
+    [1;34m47[0m: 			merged << arr1[i].merge(arr2[[1;34m0[0m][name]) [32mif[0m name == arr1[i][[33m:first_name[0m]
+    [1;34m48[0m: 		[32mend[0m
+    [1;34m49[0m: 	[32mend[0m
+ => [1;34m50[0m: 	binding.pry
+    [1;34m51[0m:   merged
+    [1;34m52[0m: 
+    [1;34m53[0m: [32mend[0m
+
