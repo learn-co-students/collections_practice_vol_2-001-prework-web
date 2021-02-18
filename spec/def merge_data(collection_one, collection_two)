@@ -1,0 +1,25 @@
+def merge_data(collection_one, collection_two)
+  # collection_one = [
+  #   {:first_name => "blake"},
+  #   {:first_name => "ashley"}
+  # ]
+
+  # collection_two = [{
+  #   "blake" => {
+  #     :awesomeness => 10,
+  #     :height => "74",
+  #     :last_name => "johnson"
+  #     },
+  #   "ashley" => {
+  #     :awesomeness => 9,
+  #     :height => 60,
+  #     :last_name => "dubs"
+  #   }
+  # }]
+
+  # iterate over each hash in collection_one
+  #   for each sub-hash, iterate through key, value pairs
+  #     check if collection_two[0] has a key that matches sub-hash value
+  #     if there's a match, add sub-hash into collection_two values hash
+  # return collection_two[0] values
+end
